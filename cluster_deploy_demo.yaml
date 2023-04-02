@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: guestbook-staging1
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: guestbook-staging
+    server: "https://501CEE16F9A09E8D135BAA03323630F6.gr7.ap-south-1.eks.amazonaws.com"
+  project: default
+  source: 
+    path: guestbook
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
